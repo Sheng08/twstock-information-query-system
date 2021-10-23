@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Restaurants </title>
+        <style>
+            table, th, td{
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+        <body>
+            <h2>餐廳列表</h2>
+            <table>
+                <tr>
+                    <th>選取</th>
+                    <th>店名</th>
+                    <th>電話</th>
+                    <th>地址</th>
+                    <th>評價</th> <!--加入這行-->
+                </tr>
+                {% for r in restaurants %}
+                    <tr>
+                        <td> <a href="/menu/{{r.id}}"> menu </a></td>
+                        <td> {{ r.name }} </td>
+                        <td> {{ r.phone_number }} </td>
+                        <td> {{ r.address }} </td>
+                        <td> <a href="/comment/{{r.id}}/"> comment </a> </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </body>
+</html>

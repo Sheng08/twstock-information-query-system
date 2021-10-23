@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% load  static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Welcome to search the stock </title>
+        <link rel="stylesheet" href="{% static 'division.css' %}">
+    </head>
+    <body>
+        <div class = 'title' style="text-align:center">
+            <h1 style="font-size:250%">股票查詢網站</h1>
+        </div>
+        <div class='real_time_search'>  
+            <form action="" method="post"> 
+                {%csrf_token%}
+                <label>請輸入<b>股票代號</b>或<b>股票名稱</b>(ex:台積電 or 2330)</label>
+                {% comment %} {{form.post}} {% endcomment %}
+                <input type="text" placeholder="請在此輸入" name="stock_name">
+                <input type="submit" value="顯示股票調查結果">
+            </form>
+
+            <h3>股市資訊即時查詢</h3>
+            <b><li> 查詢時間</b>是: {{ real_search_time }}</li>
+            <b><li> 股票代號</b>是: {{ code }}</li>
+            <b><li> 股票名稱</b>(name)是: {{ name }}</li>
+            <b><li> 股票全名</b>(fullname)是: {{ fullname }}</li>
+
+            <b><li> 最佳買入價</b>(best bid price)是: 
+            {% for i in best_bid_price%}
+            {%if forloop.last %}{{i}} {%else%} {{i}}, {%endif%} 
+            {% endfor %}
+            </li>
+            <b><li> 最佳買入數量</b>(best bid volume)是:
+            {% for i in best_bid_volume%}
+            {%if forloop.last %}{{i}} {%else%} {{i}}, {%endif%} 
+            {% endfor %}
+            </li>
+            <b><li> 最佳賣出價</b>(best ask price)是:
+            {% for i in best_ask_price%}
+            {%if forloop.last %}{{i}} {%else%} {{i}}, {%endif%} 
+            {% endfor %}
+            </li>
+            <b><li> 最佳賣出數量</b>(best ask volume)是:
+            {% for i in best_ask_volume%}
+            {%if forloop.last %}{{i}} {%else%} {{i}}, {%endif%} 
+            {% endfor %}
+            </li>
+            <b><li> 開盤價</b>(open)是: {{ open }}</li>
+            <b><li> 最高價</b>(high)是: {{ high }}</li>
+            <b><li> 最低價</b>(low)是: {{ low }}</li> 
+         {% comment %} {% empty %}
+            <p>查無此股票資訊</p> {% endcomment %}
+        </div>
+        <div class = 'plot_stock_open'>
+            <form action="" method=post>
+                {%csrf_token%}
+                <label>請選擇<b>年開盤</b>或<b>月開盤</b></label>
+                <select name="open_type">
+                    <option value="year">年開盤</option>
+                    <option value="month">月開盤</option>
+                </select> 
+                <input type="submit" value="開始輸入開盤相關資訊">
+            </form>
+
+            <form action="" method=post> 
+                {%csrf_token%}  
+                {%if open_stock_type %}
+                    <label>請選擇開盤走勢圖的股票代號</label>
+                    <select name="open_stock_code">
+                        {% for i in open_stock_type %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                {%endif%}
+                {%if open_type_select == "年開盤" %} 
+                    <label>請選擇年開盤走勢圖的年份</label>
+                    {% comment %} <input type="text" placeholder="請在此輸入年份" name="open_year"> {% endcomment %}
+                    <select name="open_stock_year1">
+                        {% for i in open_year %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <label> 年 </label>
+                    <input type="submit" value="產生開盤價走勢圖"> 
+                {%elif open_type_select == "月開盤" %} 
+                    <label>請選擇月開盤走勢圖的年份及月份 </label>
+                    {% comment %} <input type="text" placeholder="請在此輸入年份 " name="open_year"> {% endcomment %}
+                    <select name="open_stock_year2">
+                        {% for i in open_year %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <label> 年 </label>
+                    {% comment %} <input type="text" placeholder="請在此輸入月份" name="open_month"> {% endcomment %}
+                    <select name="open_stock_month">
+                        {% for i in open_month %}
+                            <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                    <label> 月 </label>
+                    <input type="submit" value="產生開盤價走勢圖"> 
+                {%endif%}
+            </form>  
+        </div>     
+    </body>
+</html>

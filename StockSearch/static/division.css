@@ -1,0 +1,25 @@
+.title{
+    width: 100%;
+    height: 51px;
+    background-color: rgb(216, 182, 160);
+    border-width:3px;
+    /* border-style: dashed; */
+}
+.real_time_search{
+    width: 50%;
+    height: 80%;
+    background-color: rgb(163, 216, 207);
+    position: absolute;
+    top: 77px;
+}
+real_time_search{
+    position: relative;
+}
+.plot_stock_open{
+    width: 50%;
+    height: 80%;
+    background-color: rgb(207, 157, 159);
+    position: absolute;
+    top:77px;
+    right: 0px;
+}
