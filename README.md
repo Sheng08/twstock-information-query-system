@@ -22,10 +22,10 @@
 >8.	將系統部屬至Ngrok
 
 ###  成果截圖：
-股票資訊查詢系統-主頁面
+股票資訊查詢系統-主頁面<br>
 ![1](https://user-images.githubusercontent.com/58781800/140335230-dc44fb56-1266-497d-aef4-6e5a023cfbd6.png)
 
-sqlite3資料庫資訊
+sqlite3資料庫資訊<br>
 ![2](https://user-images.githubusercontent.com/58781800/140336381-63ed9fe3-4d1b-495b-912c-e484f92feb2c.png)
 
 行動裝置上呈現-1<br>
