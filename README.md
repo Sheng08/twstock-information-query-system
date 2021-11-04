@@ -10,6 +10,13 @@
 |最佳賣出價、最佳賣出數量|輸入年分或月份，顯示該股票年或月開盤/收盤價走勢圖|
 |開盤價、最高價、最低價|提供使用者下載結果圖表|
 
+### Run Code：
+```
+git clone https://github.com/Sheng08/twstock-information-query-system.git
+cd twstock-information-query-system
+python manage.py runserver
+``` 
+
 
 ###  本作品中，我撰寫了以下主要功能：
 >1.	建立Django基本框架
